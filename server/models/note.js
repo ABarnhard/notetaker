@@ -1,3 +1,5 @@
+/* jshint camelcase:false */
+
 'use strict';
 
 var pg = require('../postgres/manager');

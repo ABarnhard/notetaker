@@ -14,8 +14,8 @@ module.exports = {
     }
   },
   handler: function(request, reply){
-    Note.create(request.auth.credentials, request.payload, function(err, note){
-      reply();
+    Note.create(request.auth.credentials, request.payload, function(err, noteId){
+      reply({noteId:noteId}).code(err ? 400 : 200);
     });
   }
 };

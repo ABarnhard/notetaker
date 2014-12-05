@@ -8,6 +8,10 @@
       return $http.post('/notes', note);
     }
 
-    return {create:create};
+    function recent(){
+      return $http.get('/notes?limit=10&offset=0');
+    }
+
+    return {create:create, recent:recent};
   }]);
 })();

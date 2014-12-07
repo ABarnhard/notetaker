@@ -23,6 +23,12 @@ Note.query = function(user, query, cb){
   });
 };
 
+Note.show = function(user, noteId, cb){
+  pg.query('select * from show_note($1, $2)', [user.id, noteId], function(err, results){
+    cb(err, results && results.rows ? results.rows[0] : null);
+  });
+};
+
 Note.upload = function(user, file, name, noteId, cb){
   var s3   = new AWS.S3();
 

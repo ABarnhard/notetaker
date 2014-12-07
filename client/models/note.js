@@ -14,6 +14,10 @@
       return $http.get('/notes?limit=10&offset=0');
     }
 
+    function show(noteId){
+      return $http.get('/notes/' + noteId);
+    }
+
     function upload(noteId, files){
       var count = 0;
       for (var i = 0; i < files.length; i++){
@@ -31,6 +35,6 @@
       }
     }
 
-    return {create:create, recent:recent, upload:upload};
+    return {create:create, recent:recent, upload:upload, show:show};
   }]);
 })();

@@ -1,8 +1,8 @@
-h1 NOTES
+h1 notes
 
 .row
   .small-8.columns
-    h3 VIEW
+    h3 list
     table#notes
       thead
         tr
@@ -15,8 +15,20 @@ h1 NOTES
             span.tag(ng-repeat='name in note.tag_names')
               a(href='/notes?tag={{name}}') {{name}}
   .small-4.columns
-    h3 CREATE
+    h3 create
     input(type='text', ng-model='note.title', placeholder='Title')
     textarea(ng-model='note.body')
     input(type='text', ng-model='note.tags', placeholder='tag1,tag2,tag3')
-    button.radius.success(ng-click='create(note)') Create
+    button.small.radius(ng-file-select, ng-model="files", multiple="true") Add Files
+    button.small.radius.success(ng-click='create(note)') Create
+
+    h3 uploading
+    table
+      thead
+        tr
+          th Files
+          th Uploaded
+      tbody
+        tr
+          td {{files.length}}
+          td {{count}}

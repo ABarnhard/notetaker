@@ -2,8 +2,9 @@
   'use strict';
 
   angular.module('hapi-auth')
-  .controller('NotesCtrl', ['$rootScope', '$scope', '$state', 'Note', function($rootScope, $scope, $state, Note){
-    $scope.note = {};
+  .controller('NotesCtrl', ['$scope', 'Note', function($scope, Note){
+    $scope.files = [];
+    $scope.count = 0;
 
     function getRecent(){
       Note.recent().then(function(response){
@@ -14,10 +15,16 @@
     getRecent();
 
     $scope.create = function(note){
+      $scope.count = 0;
       Note.create(note).then(function(response){
         $scope.note = {};
         getRecent();
+        Note.upload(response.data.noteId, $scope.files);
       });
     };
+
+    $scope.$on('upload', function(e, count){
+      $scope.count = count;
+    });
   }]);
 })();

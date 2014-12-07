@@ -10,8 +10,8 @@
       return $http.post('/notes', note);
     }
 
-    function recent(){
-      return $http.get('/notes?limit=10&offset=0');
+    function query(tag){
+      return $http.get('/notes?limit=10&offset=0&tag=' + tag);
     }
 
     function show(noteId){
@@ -35,6 +35,6 @@
       }
     }
 
-    return {create:create, recent:recent, upload:upload, show:show};
+    return {create:create, upload:upload, show:show, query:query};
   }]);
 })();

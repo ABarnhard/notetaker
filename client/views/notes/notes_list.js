@@ -2,12 +2,12 @@
   'use strict';
 
   angular.module('hapi-auth')
-  .controller('NotesListCtrl', ['$scope', 'Note', function($scope, Note){
+  .controller('NotesListCtrl', ['$scope', '$state', 'Note', function($scope, $state, Note){
     $scope.files = [];
     $scope.count = 0;
 
     function getRecent(){
-      Note.recent().then(function(response){
+      Note.query($state.params.tag || '%').then(function(response){
         $scope.notes = response.data.notes;
       });
     }

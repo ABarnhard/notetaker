@@ -8,8 +8,9 @@ module.exports = {
   tags:['notes'],
   validate: {
     query: {
-      limit: Joi.number().required(),
-      offset: Joi.number().required()
+      limit: Joi.number(),
+      offset: Joi.number(),
+      tag: Joi.string()
     }
   },
   handler: function(request, reply){

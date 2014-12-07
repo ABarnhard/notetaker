@@ -4,7 +4,7 @@ h6.subheader {{moment(note.updated_at).format('MMMM Do YYYY @ h:mm:ss a')}}
 h6 //Tags//
 #tags
   .tag(ng-repeat='tag in note.tags')
-    a(href='/notes?tag={{tag}}') {{tag}}
+    a(ui-sref='notes.list({tag:tag})') {{tag}}
 h6 //Body//
 blockquote {{note.body}}
 h6 //Photos//

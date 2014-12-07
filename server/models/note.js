@@ -29,6 +29,12 @@ Note.show = function(user, noteId, cb){
   });
 };
 
+Note.count = function(user, cb){
+  pg.query('select count(*) from notes where user_id = $1', [user.id], function(err, results){
+    cb(err, results && results.rows ? results.rows[0].count : null);
+  });
+};
+
 Note.upload = function(user, file, name, noteId, cb){
   var s3   = new AWS.S3();
 

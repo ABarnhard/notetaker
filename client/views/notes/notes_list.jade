@@ -13,7 +13,11 @@ h1 notes
           td: a(ui-sref='notes.detail({noteId:note.note_id})') {{note.title}}
           td
             span.tag(ng-repeat='name in note.tags')
-              a(ui-sref='notes.list({tag:name})') {{name}}
+              a(ui-sref='notes.list({tag:name})') {{name}}          
+    .pagination-centered
+      ul.pagination
+        li(ng-class='{current:isCurrent(page)}', ng-repeat='page in _.range(0,pages)')
+          a(ui-sref='notes.list({page:page})') {{page}}
   .small-4.columns
     h3 create
     input(type='text', ng-model='note.title', placeholder='Title')

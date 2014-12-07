@@ -10,7 +10,7 @@
         .state('register',     {url:'/register', templateUrl:'/views/users/users.html',        controller:'UsersCtrl'})
         .state('login',        {url:'/login',    templateUrl:'/views/users/users.html',        controller:'UsersCtrl'})
         .state('notes',        {url:'/notes',    templateUrl:'/views/notes/notes.html',        abstract:true})
-        .state('notes.list',   {url:'?tag',      templateUrl:'/views/notes/notes_list.html',   controller:'NotesListCtrl'})
+        .state('notes.list',   {url:'?tag&page', templateUrl:'/views/notes/notes_list.html',   controller:'NotesListCtrl'})
         .state('notes.detail', {url:'/{noteId}', templateUrl:'/views/notes/notes_detail.html', controller:'NotesDetailCtrl'});
       }])
     .run(['$rootScope', '$http', function($rootScope, $http){

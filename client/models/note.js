@@ -10,12 +10,16 @@
       return $http.post('/notes', note);
     }
 
-    function query(tag){
-      return $http.get('/notes?limit=10&offset=0&tag=' + tag);
+    function query(tag, page){
+      return $http.get('/notes?limit=5&offset=' + 5 * page + '&tag=' + tag);
     }
 
     function show(noteId){
       return $http.get('/notes/' + noteId);
+    }
+
+    function count(){
+      return $http.get('/notes/count');
     }
 
     function upload(noteId, files){
@@ -35,6 +39,6 @@
       }
     }
 
-    return {create:create, upload:upload, show:show, query:query};
+    return {create:create, upload:upload, show:show, query:query, count:count};
   }]);
 })();

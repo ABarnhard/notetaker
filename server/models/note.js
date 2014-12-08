@@ -35,6 +35,12 @@ Note.count = function(user, cb){
   });
 };
 
+Note.nuke = function(user, noteId, cb){
+  pg.query('select nuke_note($1, $2)', [user.id, noteId], function(err, results){
+    cb(err, results && results.rows ? results.rows[0].nuke_note : null);
+  });
+};
+
 Note.upload = function(user, file, name, noteId, cb){
   var s3   = new AWS.S3();
 

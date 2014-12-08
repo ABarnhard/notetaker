@@ -1,4 +1,4 @@
-/* jshint loopfunc:true */
+/* jshint loopfunc:true, camelcase:false */
 
 (function(){
   'use strict';
@@ -22,6 +22,10 @@
       return $http.get('/notes/count');
     }
 
+    function nuke(note){
+      return $http.delete('/notes/' + note.note_id);
+    }
+
     function upload(noteId, files){
       var count = 0;
       for (var i = 0; i < files.length; i++){
@@ -39,6 +43,6 @@
       }
     }
 
-    return {create:create, upload:upload, show:show, query:query, count:count};
+    return {create:create, upload:upload, show:show, query:query, count:count, nuke:nuke};
   }]);
 })();
